@@ -35,6 +35,7 @@
 #  id_scheme                     :integer          default("numeric_ap_id")
 #  inbox_url                     :string           default(""), not null
 #  indexable                     :boolean          default(FALSE), not null
+#  is_cat                        :boolean          default(FALSE), not null
 #  last_webfingered_at           :datetime
 #  locked                        :boolean          default(FALSE), not null
 #  memorial                      :boolean          default(FALSE), not null
@@ -194,6 +195,7 @@ class Account < ApplicationRecord
            :unconfirmed_or_pending?,
            :role,
            :locale,
+           :is_cat,
            :shows_application?,
            :email_subscriptions_enabled?,
            :prefers_noindex?,
