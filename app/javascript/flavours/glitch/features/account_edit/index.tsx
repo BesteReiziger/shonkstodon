@@ -182,6 +182,10 @@ export const AccountEdit: FC = () => {
     void dispatch(patchProfile({ bot: !profile?.bot }));
   }, [dispatch, profile?.bot]);
 
+  const handleIsCatToggle = useCallback(() => {
+    void dispatch(patchProfile({ is_cat: !profile?.isCat }));
+  }, [dispatch, profile?.isCat]);
+
   // Normally we would use the account emoji, but we want all custom emojis to be available to render after editing.
   const emojis = useCustomEmojis();
   const htmlHandlers = useElementHandledLink({
@@ -363,6 +367,23 @@ export const AccountEdit: FC = () => {
               <FormattedMessage
                 id='account_edit.advanced_settings.bot_hint'
                 defaultMessage='Signal to others that the account mainly performs automated actions and might not be monitored'
+              />
+            }
+          />
+          <ToggleField
+            checked={profile.isCat}
+            onChange={handleIsCatToggle}
+            disabled={isPending}
+            label={
+              <FormattedMessage
+                id='account_edit.advanced_settings.is_cat_label'
+                defaultMessage='Cat ears'
+              />
+            }
+            hint={
+              <FormattedMessage
+                id='account_edit.advanced_settings.is_cat_hint'
+                defaultMessage='Are you a cat? Inform other servers that you wish to be displayed with cat ears. This feature is supported by some Fedi servers, most specifically those based off of Misskey.'
               />
             }
           />

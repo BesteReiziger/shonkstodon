@@ -14,6 +14,7 @@ export interface ApiProfileJSON {
   header_description: string;
   locked: boolean;
   bot: boolean;
+  is_cat: boolean;
   hide_collections: boolean;
   discoverable: boolean;
   indexable: boolean;
@@ -33,6 +34,7 @@ export type ApiProfileUpdateParams = Partial<
     | 'note'
     | 'locked'
     | 'bot'
+    | 'is_cat'
     | 'hide_collections'
     | 'discoverable'
     | 'indexable'
